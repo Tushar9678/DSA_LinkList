@@ -22,6 +22,45 @@ public class LL{
         }
         size +=1;
     }
+    
+    //Insert node to last position of link list
+    public void insertlast(int val){
+
+        if(tail == null){
+            insertfirst(val);
+            return;
+        }
+
+        Node node = new Node(val);
+        tail.next= node;
+        tail = node;
+        size++;
+    }
+
+        //Insert node to particular position of link list
+        public void insert(int val, int index){
+
+            if(index == 0){
+                insertfirst(val);
+                size++;
+            }
+
+            if(index == size){
+                insertlast(val);
+                size++;
+            }
+
+            Node temp = head;
+            for(int i=1; i<index; i++){
+                temp = temp.next;
+            }
+
+            Node node = new Node(val, temp.next);
+            temp.next = node;
+            size++;
+
+        }
+
 
 
     // display link list
@@ -59,6 +98,11 @@ public class LL{
         list.insertfirst(2);
         list.insertfirst(1);
         list.insertfirst(0);
+
+        list.insertlast(4);
+        list.insertlast(5);
+
+        list.insert(100, 3);
 
         list.display();
 
